@@ -98,24 +98,16 @@ buttonDown.addEventListener("click", moveDown);
 buttonRight.addEventListener("click", moveRight);
 buttonLeft.addEventListener("click", moveLeft);
 
-function withInTheMargin() {
-  if (
-  playerPosition.x >= elementsSize &&
-  playerPosition.x <= canvasSize &&
-  playerPosition.y >= elementsSize &&
-  playerPosition.y <= canvasSize 
-  ) {
-    return true
-  }
-}
+
 
 function moveUp() {
   console.log("Me quiero mover hacia arriba");
-  playerPosition.y -= elementsSize
-  if(withInTheMargin()) {
-    startGame()
+
+  if((playerPosition.y - elementsSize) < 0) {
+    console.log("OUT");
   } else {
-    playerPosition.y += elementsSize
+    playerPosition.y -= elementsSize
+    startGame()
   }
 }
 
